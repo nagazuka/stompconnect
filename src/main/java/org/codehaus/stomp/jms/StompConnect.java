@@ -62,7 +62,7 @@ public class StompConnect extends ServiceSupport implements StompHandlerFactory 
         if (factory == null) {
             throw new IllegalArgumentException("No ConnectionFactory is configured!");
         }
-        return new ProtocolConverter(factory, outputHandler);
+        return new ProtocolConverter(factory, outputHandler, initialContext);
     }
 
     /**

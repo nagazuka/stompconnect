@@ -3,7 +3,7 @@
   <groupId>org.codehaus.stomp</groupId>
   <artifactId>stompconnect</artifactId>
   <packaging>jar</packaging>
-  <version>1.0</version>
+  <version>2.0</version>
 
   <name>StompConnect</name>
   <description>
@@ -20,17 +20,6 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
-
-  <organization>
-    <name>LogicBlaze, Inc.</name>
-    <url>http://www.logicblaze.com/</url>
-  </organization>
-
-  <scm>
-    <connection>scm:svn:https://svn.codehaus.org/stomp/tags/stompconnect-1.0</connection>
-    <developerConnection>scm:svn:https://svn.codehaus.org/stomp/tags/stompconnect-1.0</developerConnection>
-    <url>https://svn.codehaus.org/stomp/tags/stompconnect-1.0</url>
-  </scm>
 
   <dependencies>
     <dependency>
@@ -86,23 +75,6 @@
     </repository>
   </repositories>
 
-  <distributionManagement>
-    <repository>
-      <id>codehaus.org</id>
-      <name>Stomp Central Repository</name>
-      <url>dav:https://dav.codehaus.org/repository/stomp/</url>
-    </repository>
-    <snapshotRepository>
-      <id>codehaus.org</id>
-      <name>Stomp Central Development Repository</name>
-      <url>dav:https://dav.codehaus.org/snapshots.repository/stomp/</url>
-    </snapshotRepository>
-    <site>
-      <id>codehaus.org</id>
-      <url>dav:https://dav.codehaus.org/stomp/maven/</url>
-    </site>
-  </distributionManagement>
-
   <reporting>
     <plugins>
       <plugin>
@@ -123,13 +95,6 @@
 
     <plugins>
       <plugin>
-        <artifactId>maven-release-plugin</artifactId>
-        <configuration>
-          <tagBase>https://svn.codehaus.org/stomp/tags/</tagBase>
-        </configuration>
-      </plugin>
-
-      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
@@ -137,67 +102,6 @@
           <target>1.5</target>
         </configuration>
       </plugin>
-      <!--
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <version>2.1</version>
-        <executions>
-          <execution>
-            <id>unix-bin</id>
-            <phase>package</phase>
-            <goals>
-              <goal>single</goal>
-            </goals>
-            <configuration>
-              <descriptors>
-                <descriptor>src/main/descriptors/unix-bin.xml</descriptor>
-              </descriptors>
-              <finalName>${pom.artifactId}-${pom.version}</finalName>
-              <appendAssemblyId>false</appendAssemblyId>
-            </configuration>
-          </execution>
-          <execution>
-            <id>windows-bin</id>
-            <phase>package</phase>
-            <goals>
-              <goal>single</goal>
-            </goals>
-            <configuration>
-              <descriptors>
-                <descriptor>src/main/descriptors/windows-bin.xml</descriptor>
-              </descriptors>
-              <finalName>${pom.artifactId}-${pom.version}</finalName>
-              <appendAssemblyId>false</appendAssemblyId>
-            </configuration>
-          </execution>
-          <execution>
-            <id>unix-src</id>
-            <phase>package</phase>
-            <goals>
-              <goal>single</goal>
-            </goals>
-            <configuration>
-              <descriptors>
-                <descriptor>src/main/descriptors/unix-src.xml</descriptor>
-              </descriptors>
-            </configuration>
-          </execution>
-          <execution>
-            <id>windows-src</id>
-            <phase>package</phase>
-            <goals>
-              <goal>single</goal>
-            </goals>
-            <configuration>
-              <descriptors>
-                <descriptor>src/main/descriptors/windows-src.xml</descriptor>
-              </descriptors>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      -->
     </plugins>
 
   </build>

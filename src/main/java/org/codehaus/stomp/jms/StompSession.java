@@ -22,6 +22,9 @@ import org.codehaus.stomp.Stomp;
 import org.codehaus.stomp.StompFrame;
 
 import javax.jms.*;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
 import java.io.IOException;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -89,7 +92,15 @@ public class StompSession {
         }
         else if (name.startsWith("/queue/")) {
             String queueName = name.substring("/queue/".length(), name.length());
-            return session.createQueue(queueName);
+            InitialContext context = getProtocolConverter().getInitialContext();
+            Queue queue = null;
+			try {
+				queue = (Queue) context.lookup(queueName);
+			} catch (NamingException e) {
+				e.printStackTrace();
+			}
+            return queue;
+            //return session.createQueue(queueName);
         }
         else if (name.startsWith("/topic/")) {
             String topicName = name.substring("/topic/".length(), name.length());

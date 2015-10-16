@@ -31,6 +31,8 @@ import javax.jms.ConnectionFactory;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.Session;
+import javax.naming.InitialContext;
+
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
@@ -50,6 +52,7 @@ public class ProtocolConverter implements StompHandler {
     private static final transient Log log = LogFactory.getLog(ProtocolConverter.class);
     private ConnectionFactory connectionFactory;
     private final StompHandler outputHandler;
+    private InitialContext initialContext;
     private Connection connection;
     private StompSession defaultSession;
     private StompSession clientAckSession;
@@ -57,9 +60,10 @@ public class ProtocolConverter implements StompHandler {
     private final Map subscriptions = new ConcurrentHashMap();
     private final Map messages = new ConcurrentHashMap();
 
-    public ProtocolConverter(ConnectionFactory connectionFactory, StompHandler outputHandler) {
+    public ProtocolConverter(ConnectionFactory connectionFactory, StompHandler outputHandler, InitialContext initialContext) {
         this.connectionFactory = connectionFactory;
         this.outputHandler = outputHandler;
+        this.initialContext = initialContext;
     }
 
     public ConnectionFactory getConnectionFactory() {
@@ -473,4 +477,8 @@ public class ProtocolConverter implements StompHandler {
      */
     protected void considerClosingTransactedSession(StompSession session, String stompTx) {
     }
+
+	public InitialContext getInitialContext() {
+		return this.initialContext;
+	}
 }
